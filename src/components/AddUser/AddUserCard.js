@@ -13,7 +13,7 @@ const AddUserCard = () => {
         userId: '',
         phoneNumber: '',
         ipAddress: '',
-        Email: '',
+        email: '',
       };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -28,8 +28,8 @@ const AddUserCard = () => {
     
       const handleSubmit = (event) => {
         event.preventDefault();
-        if (formData.fullName && formData.userId && formData.phoneNumber && formData.ipAddress && formData.Email) {
-          addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress, formData.Email)
+        if (formData.fullName && formData.userId && formData.phoneNumber && formData.ipAddress && formData.email) {
+          addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress, formData.email)
           alert('User Added:', formData);
           setFormData(initialFormData);
         } else {
@@ -63,10 +63,10 @@ const AddUserCard = () => {
         </label >
         <label className={classes.lableBlock}>
             <div>Email:</div>
-            <input type="text" name="Email" value={formData.Email} onChange={handleChange} />
+            <input type="text" name="email" value={formData.email} onChange={handleChange} />
         </label >
             <div>
-                <input type="submit" value="Submit" disabled={!formData.fullName || !formData.userId || !formData.phoneNumber || !formData.ipAddress || !formData.Email}/>
+                <input type="submit" value="Submit" disabled={!formData.fullName || !formData.userId || !formData.phoneNumber || !formData.ipAddress || !formData.email}/>
             </div>
             <img src={picForForm} alt="influencerImg" style={{height:'30%', width: '35%'}}></img>
     </form>

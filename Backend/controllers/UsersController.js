@@ -39,7 +39,8 @@ class UsersController {
             fullName1=request.query.fullName;
             userId1=request.query.userId;
             phoneNumber1=request.query.phoneNumber;
-            ipAddress1=request.query.phoneNumber;
+            ipAddress1=request.query.ipAddress;
+            email1=request.query.email;
             const result = await UsersServices.addUser();
             response.status(StatusCodes.OK).send(result);
             return;
