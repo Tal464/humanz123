@@ -15,9 +15,9 @@ export const fetchData = async (pageNumber, numberOfRowsToFetch, filterHValue) =
     }
 };
 
-export const addUser = async (fullName, userId, phoneNumber, ipAddress) => {
+export const addUser = async (fullName, userId, phoneNumber, ipAddress, email) => {
     try {
-        const response = await axiosInstance.post(`/addUser?fullName=${fullName}&userId=${userId}&phoneNumber=${phoneNumber}&ipAddress=${ipAddress}`);
+        const response = await axiosInstance.post(`/addUser?fullName=${fullName}&userId=${userId}&phoneNumber=${phoneNumber}&ipAddress=${ipAddress}&email=${email}`);
     } catch (error) {
         // console.error(er
         return null;

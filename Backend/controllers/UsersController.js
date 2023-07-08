@@ -35,13 +35,12 @@ class UsersController {
         response
     ) =>{
         try {
-          `/addUser?fullName=${fullName}&userId=${userId}&phoneNumber=${phoneNumber}&ipAddress=${ipAddress}`
             fullName1=request.query.fullName;
             userId1=request.query.userId;
             phoneNumber1=request.query.phoneNumber;
             ipAddress1=request.query.ipAddress;
             email1=request.query.email;
-            const result = await UsersServices.addUser();
+            const result = await UsersServices.addUser(fullName1, userId1, phoneNumber1, ipAddress1, email1);
             response.status(StatusCodes.OK).send(result);
             return;
         }

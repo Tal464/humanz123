@@ -29,7 +29,7 @@ const AddUserCard = () => {
       const handleSubmit = (event) => {
         event.preventDefault();
         if (formData.fullName && formData.userId && formData.phoneNumber && formData.ipAddress && formData.email) {
-          addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress, formData.email)
+          // addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress, formData.email)
           alert('User Added:', formData);
           setFormData(initialFormData);
         } else {

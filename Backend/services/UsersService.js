@@ -42,9 +42,31 @@ class UsersService {
             db.close();
         });
     }
-    // async addUser () {
-    //     console.log('hi');
-    // };
+    async addUser(fullName, userId, phoneNumber, ipAddress, email) {
+        const db = new sqlite3.Database('C:/Users/user/Desktop/Humanz2/usersDB.db');
+      
+        const sqlQuery = 'INSERT INTO users ("Full name", Email, ID, "Phone number", "IP Address") VALUES (?, ?, ?, ?, ?)';
+        const params = [fullName, email, userId, phoneNumber, ipAddress];
+      
+        return new Promise((resolve, reject) => {
+          db.run(sqlQuery, params, function (err) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        })
+          .then(() => {
+            console.log('Row inserted');
+            db.close();
+          })
+          .catch(error => {
+            console.error(error.message);
+            db.close();
+          });
+      }
+      
 
     // async deleteUser() {
 
