@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import { useStyles } from './AddUserCard.s';
 import { useState } from 'react';
 import picForForm from './influencer.png';
+import { addUser } from '../../DAL/server-requests/usersDAL.js'
 
 const AddUserCard = () => {
     const classes = useStyles();
@@ -27,9 +28,9 @@ const AddUserCard = () => {
       const handleSubmit = (event) => {
         event.preventDefault();
         if (formData.fullName && formData.userId && formData.phoneNumber && formData.ipAddress) {
-          alert('Form submitted:', formData);
+          // addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress)
+          alert('User Added:', formData);
           setFormData(initialFormData);
-
         } else {
           console.log('Please fill all fields');
         }

@@ -1,8 +1,25 @@
+import sqlite3 from 'sqlite3';
+
 class UsersService {
-    async fetchData (pageNumber, numberOfRowsToFetch, filterValue) {
-        const sqlite3 = require('sqlite3');
+    async getNumber (filterValue){
         const db = new sqlite3.Database('C:/Users/user/Desktop/Humanz2/usersDB.db');
-    
+        let sqlQuery = `SELECT COUNT(*) FROM users WHERE Name LIKE ?`;
+        return new Promise((resolve, reject) => {
+            db.get(sqlQuery, [`${filterValue}%`], (err, counter) => {
+                console.log(counter)
+                if (err) {
+                  reject(err);
+                } else {
+                  resolve(counter.count);
+                }
+              });
+        }).finally(() => {
+            db.close();
+        });
+    }
+
+    async fetchData (pageNumber, numberOfRowsToFetch, filterValue) {
+        const db = new sqlite3.Database('C:/Users/user/Desktop/Humanz2/usersDB.db');
         let sqlQuery = `SELECT * FROM users ORDER BY 'Full Name' ASC LIMIT ${
             pageNumber * numberOfRowsToFetch
         }, ${numberOfRowsToFetch}`;
@@ -35,4 +52,4 @@ class UsersService {
 
 };
 
-export default UsersService;
+export default new UsersService;

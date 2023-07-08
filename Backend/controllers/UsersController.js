@@ -1,4 +1,5 @@
 // import { Request, Response } from 'express';
+import { request } from 'express';
 import UsersService from '../services/UsersService.js';
 import { StatusCodes } from 'http-status-codes';
 
@@ -11,6 +12,19 @@ class UsersController {
           const result = await UsersService.fetchData(pageNumber, numberOfRowsToFetch, filterValue);
           response.status(StatusCodes.OK).send(result);
         } catch (error) {
+          console.error(error);
+          response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Internal Server Error');
+        }
+      };
+
+      getNumber = async (request, response) => {
+        try{
+          console.log('hiiii');
+          const filterValue = request.query.filterValue;
+          const result = await UsersService.getNumber(filterValue);
+          response.status(StatusCodes.OK).send(result);
+        }
+        catch (error) {
           console.error(error);
           response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Internal Server Error');
         }
@@ -49,4 +63,4 @@ class UsersController {
 //     }
 };
 
-export default UsersController;
+export default new UsersController;

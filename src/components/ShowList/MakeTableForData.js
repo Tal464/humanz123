@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchData } from '../../DAL/server-requests/usersDAL';
-import { Table, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
-
+import { Box,FormControl, InputAdornment, Input, InputLabel, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
 const MakeTable = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
@@ -22,6 +21,10 @@ const MakeTable = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
+  const onInputChange = (event) => {
+    setFilter(event.target.value);
+  }
+
   const fetchDataForPage = (pageNumber, rowsInPage, filter) => {
     fetchData(pageNumber, rowsInPage, filter)
       .then((currentList) => {
@@ -36,29 +39,52 @@ const MakeTable = () => {
 
   return (
     !isLoading && (
-      <div>
-        <Table>
-          <TableHead style={{ position: 'sticky', top: 0, backgroundColor: 'white' }}>
-            <TableRow>
-              <TableCell>Full Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>ID</TableCell>
-              <TableCell>Phone Number</TableCell>
-              <TableCell>IP Address</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {currentUsersList.map((user, i) => (
-              <TableRow key={i}>
-                <TableCell>{user[0]}</TableCell>
-                <TableCell>{user[1]}</TableCell>
-                <TableCell>{user[2]}</TableCell>
-                <TableCell>{user[3]}</TableCell>
-                <TableCell>{user[4]}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <div style={{ height: 'inherit', width: 'inherit' }}>
+        <div style={{ height: '50px', display: "flex", alignItems: "center" }}>
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <FormControl variant="standard">
+              <InputLabel htmlFor="input-with-icon-adornment">
+                Search user by his name
+              </InputLabel>
+              <Input
+                id="input-with-icon-adornment"
+                value={filter}
+                onChange={onInputChange}
+                startAdornment={
+                  <InputAdornment position="start"></InputAdornment>
+                }
+              />
+            </FormControl>
+          </Box>
+        </div>
+        <div style={{ height: 'calc(100% - 100px)', overflow: 'auto' }}>
+          <Table>
+            <TableHead style={{ position: 'sticky', top: 0, backgroundColor: 'white' }}>
+              <TableContainer style={{ display: 'flex', fontSize: '10px', width: '410px', height: '50px' }}>
+                <TableRow>
+                  <TableCell>Full Name</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Phone Number</TableCell>
+                  <TableCell>IP Address</TableCell>
+                </TableRow>
+              </TableContainer>
+            </TableHead>
+            <TableBody>
+              {currentUsersList.map((user, i) => (
+                <TableContainer style={{ display: 'flex', fontSize: '10px', width: '410px', height: '50px' }}>
+                  <TableRow key={i}>
+                    <TableCell>{user['Full Name']}</TableCell>
+                    <TableCell>{user['Email']}</TableCell>
+                    <TableCell>{user['ID']}</TableCell>
+                    <TableCell>{user['Phone number']}</TableCell>
+                    <TableCell>{user['IP address']}</TableCell>
+                  </TableRow>
+                </TableContainer>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <TablePagination
           component="div"
           page={pageNumber}
