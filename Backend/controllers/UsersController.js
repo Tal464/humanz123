@@ -30,21 +30,25 @@ class UsersController {
         }
       };
 
-//     addUser = async (
-//         request,
-//         response
-//     ) =>{
-//         try {
-//             parameters=request.query.mmmm;lhlj
-//             const result = await UsersServices.addUser();
-//             response.status(StatusCodes.OK).send(result);
-//             return;
-//         }
-//         catch (error) {
-//             console.error(error);
-//             return;
-//         }
-//     }
+    addUser = async (
+        request,
+        response
+    ) =>{
+        try {
+          `/addUser?fullName=${fullName}&userId=${userId}&phoneNumber=${phoneNumber}&ipAddress=${ipAddress}`
+            fullName1=request.query.fullName;
+            userId1=request.query.userId;
+            phoneNumber1=request.query.phoneNumber;
+            ipAddress1=request.query.phoneNumber;
+            const result = await UsersServices.addUser();
+            response.status(StatusCodes.OK).send(result);
+            return;
+        }
+        catch (error) {
+            console.error(error);
+            return;
+        }
+    }
 
 //     deleteUser = async (
 //         request,

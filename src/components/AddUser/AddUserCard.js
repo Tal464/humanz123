@@ -13,6 +13,7 @@ const AddUserCard = () => {
         userId: '',
         phoneNumber: '',
         ipAddress: '',
+        Email: '',
       };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -28,7 +29,7 @@ const AddUserCard = () => {
       const handleSubmit = (event) => {
         event.preventDefault();
         if (formData.fullName && formData.userId && formData.phoneNumber && formData.ipAddress) {
-          // addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress)
+          addUser(formData.fullName, formData.userId, formData.phoneNumber, formData.ipAddress)
           alert('User Added:', formData);
           setFormData(initialFormData);
         } else {
@@ -59,6 +60,10 @@ const AddUserCard = () => {
         <label className={classes.lableBlock}>
             <div>IP Address:</div>
             <input type="text" name="ipAddress" value={formData.ipAddress} onChange={handleChange} />
+        </label >
+        <label className={classes.lableBlock}>
+            <div>Email:</div>
+            <input type="text" name="Email" value={formData.ipAddress} onChange={handleChange} />
         </label >
             <div>
                 <input type="submit" value="Submit" disabled={!formData.fullName || !formData.userId || !formData.phoneNumber || !formData.ipAddress}/>
