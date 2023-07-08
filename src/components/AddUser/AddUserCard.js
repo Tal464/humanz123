@@ -63,10 +63,10 @@ const AddUserCard = () => {
         </label >
         <label className={classes.lableBlock}>
             <div>Email:</div>
-            <input type="text" name="Email" value={formData.ipAddress} onChange={handleChange} />
+            <input type="text" name="Email" value={formData.Email} onChange={handleChange} />
         </label >
             <div>
-                <input type="submit" value="Submit" disabled={!formData.fullName || !formData.userId || !formData.phoneNumber || !formData.ipAddress}/>
+                <input type="submit" value="Submit" disabled={!formData.fullName || !formData.userId || !formData.phoneNumber || !formData.ipAddress || !formData.Email}/>
             </div>
             <img src={picForForm} alt="influencerImg" style={{height:'30%', width: '35%'}}></img>
     </form>
