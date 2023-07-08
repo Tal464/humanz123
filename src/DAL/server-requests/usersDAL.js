@@ -9,7 +9,7 @@ export const fetchData = async (pageNumber, numberOfRowsToFetch, filterHValue) =
         const response = await axiosInstance.post(`/fetch?pageNumber=${pageNumber}&numberOfRowsToFetch=${numberOfRowsToFetch}&filterValue=${filterHValue}`);
         return response.data;
     } catch (error) {
-        // console.error(error);
+        // console.error(er
         return null;
     }
 };
