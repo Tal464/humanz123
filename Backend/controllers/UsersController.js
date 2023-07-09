@@ -30,10 +30,7 @@ class UsersController {
         }
       };
 
-    addUser = async (
-        request,
-        response
-    ) =>{
+    addUser = async (request, response) =>{
         try {
             fullName1=request.query.fullName;
             userId1=request.query.userId;
@@ -50,21 +47,16 @@ class UsersController {
         }
     }
 
-//     deleteUser = async (
-//         request,
-//         response
-//     ) =>{
-//         try {
-//             parameters=request.query.mmmm;lhlj
-//             const result = await UsersServices.deleteUser();
-//             response.status(StatusCodes.OK).send(result);
-//             return;
-//         }
-//         catch (error) {
-//             console.error(error);
-//             return;
-//         }
-//     }
+    deleteUser = async (request, response) => {
+      try {
+        const userID = request.query.userId;
+        const result = await UsersService.deleteUser(userID);
+        response.status(StatusCodes.OK).send(result);
+      } catch (error) {
+        console.error(error);
+        response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Internal Server Error');
+      }
+    };
 };
 
 export default new UsersController;

@@ -73,15 +73,6 @@ const MakeTable = () => {
             </TableHead>
             <TableBody>
               {currentUsersList.map((user, i) => (
-                // <TableContainer style={{ display: 'flex', fontSize: '10px', width: '410px', height: '50px' }}>
-                //   <TableRow key={i}>
-                //     <TableCell>{user['Full Name']}</TableCell>
-                //     <TableCell>{user['Email']}</TableCell>
-                //     <TableCell>{user['ID']}</TableCell>
-                //     <TableCell>{user['Phone number']}</TableCell>
-                //     <TableCell>{user['IP address']}</TableCell>
-                //   </TableRow>
-                // </TableContainer>
                 <OnClickRow user={user} i={i}></OnClickRow>
               ))}
             </TableBody>

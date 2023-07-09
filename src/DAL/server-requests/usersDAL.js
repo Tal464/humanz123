@@ -23,3 +23,12 @@ export const addUser = async (fullName, userId, phoneNumber, ipAddress, email) =
         return null;
     }
 };
+
+export const deleteUser = async (userId) => {
+    try {
+        const response = await axiosInstance.delete(`/deleteUser?userId=${userId}`);
+    } catch (error) {
+        // console.error(er
+        return null;
+    }
+};

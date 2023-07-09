@@ -1,15 +1,20 @@
 import { TableContainer, TableRow, TableCell, Button } from '@mui/material';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
+import { deleteUser } from '../../DAL/server-requests/usersDAL';
 
 const OnClickRow = (props) => {
   const [wantsToDelete, setWantsToDelete] = useState(false);
+  const { user } = props;
   const onClick = () => {
     setWantsToDelete(true);
   };
 
-  const handleConfirm = () => {
-    // Handle delete confirmation logic here
+  const handleConfirm = (event) => {
+    event.stopPropagation();
+    setWantsToDelete(false);
+    const userID = user['ID'];
+    // deleteUser(userID);
   };
 
   const handleCancel = (event) => {

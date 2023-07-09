@@ -5,6 +5,8 @@ const getUsersRouter = Router();
 getUsersRouter.post('/fetch', UsersController.fetchData);
 getUsersRouter.post('/getNumber', UsersController.getNumber);
 getUsersRouter.post('/addUser', UsersController.addUser);
+getUsersRouter.delete('/deleteUser', UsersController.deleteUser)
+
 // const getUsersRouter = () => {
 //   const router = Router();
 //   router.post('/fetch', UsersController.fetchData);
