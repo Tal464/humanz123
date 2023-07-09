@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchData } from '../../DAL/server-requests/usersDAL';
 import { Box,FormControl, InputAdornment, Input, InputLabel, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, TablePagination } from '@mui/material';
+import OnClickRow from './onClickRow'
 const MakeTable = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
@@ -72,15 +73,16 @@ const MakeTable = () => {
             </TableHead>
             <TableBody>
               {currentUsersList.map((user, i) => (
-                <TableContainer style={{ display: 'flex', fontSize: '10px', width: '410px', height: '50px' }}>
-                  <TableRow key={i}>
-                    <TableCell>{user['Full Name']}</TableCell>
-                    <TableCell>{user['Email']}</TableCell>
-                    <TableCell>{user['ID']}</TableCell>
-                    <TableCell>{user['Phone number']}</TableCell>
-                    <TableCell>{user['IP address']}</TableCell>
-                  </TableRow>
-                </TableContainer>
+                // <TableContainer style={{ display: 'flex', fontSize: '10px', width: '410px', height: '50px' }}>
+                //   <TableRow key={i}>
+                //     <TableCell>{user['Full Name']}</TableCell>
+                //     <TableCell>{user['Email']}</TableCell>
+                //     <TableCell>{user['ID']}</TableCell>
+                //     <TableCell>{user['Phone number']}</TableCell>
+                //     <TableCell>{user['IP address']}</TableCell>
+                //   </TableRow>
+                // </TableContainer>
+                <OnClickRow user={user} i={i}></OnClickRow>
               ))}
             </TableBody>
           </Table>
@@ -88,7 +90,7 @@ const MakeTable = () => {
         <TablePagination
           component="div"
           page={pageNumber}
-          count={currentUsersList.length}
+          count={'29,000'}
           rowsPerPage={rowsInPage}
           onPageChange={onPageChange}
           onRowsPerPageChange={onRowsPerPageChange}
