@@ -1,5 +1,5 @@
-Hi
-This is my work
+#Hi
+#This is my work
 run front from HUMANZ2 (npm start)
 run back from HUMANZ2/Backend (npm run dev)
 
